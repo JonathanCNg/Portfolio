@@ -1,10 +1,20 @@
 console.log("Hi");
-const buttonEl = document.querySelector(".prev");
+const buttonPrev = document.querySelector(".prev");
+const buttonNext = document.querySelector(".next");
 const galleryEl = document.querySelector(".gallery");
-let imgNum = 1;
-buttonEl.addEventListener("click", (eventObject)=>{
-    imgNum++;
-    if(imgNum > 3) imgNum = 1;
-    let imgString = "./images/image" + imgNum + ".jpg";
+let imgNumCurr = 1;
+const imgNumMax = 3;
+buttonPrev.addEventListener("click", (eventObject)=>{
+    console.log("COOKIES")
+    imgNumCurr--;
+    if(imgNumCurr < 1) imgNumCurr = imgNumMax;
+    let imgString = "./images/image" + imgNumCurr + ".jpg";
     galleryEl.setAttribute("src", imgString);
 })
+buttonNext.addEventListener("click", (eventObject)=>{
+    imgNumCurr++;
+    if(imgNumCurr > imgNumMax) imgNumCurr = 1;
+    let imgString = "./images/image" + imgNumCurr + ".jpg";
+    galleryEl.setAttribute("src", imgString);
+})
+
